@@ -1,0 +1,22 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        list1=list(str(x))
+        rlist=list(reversed(list1))
+        if rlist[len(rlist)-1]!='-':
+            rstr=''
+            for i in rlist:
+                rstr=rstr+i
+            rint=int(rstr)
+            if rint in range(-pow(2,31),pow(2,31)):
+                return rint
+            else:
+                return 0
+        else:
+            rstr=''
+            for i in range(len(rlist)-1):
+                rstr=rstr+rlist[i]
+            rint=int(rstr)
+            if rint in range(-pow(2,31),pow(2,31)):
+                return -rint
+            else:
+                return 0
