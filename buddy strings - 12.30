@@ -1,0 +1,40 @@
+class Solution:
+    # def compare(self,newA:str,B:str) -> bool:
+    #     for i in range(len(newA)):
+    #         if newA[i]!=B[i]:
+    #             return False
+    #     return True
+    
+    def buddyStrings(self, A: str, B: str) -> bool:
+        if len(A)!=len(B):
+            return False
+        elif len(A)==0 and len(B)==0:
+            return False
+        elif A==B:
+            for i in range(len(A)-1):
+                for j in range(i+1,len(A)):
+                    if A[i]==A[j]:
+                        return True
+            return False
+                    
+        # for i in range(len(A)):
+        #     if A[i]!=B[i]
+        #         for j in range(i+1,len(A)):
+        #             A1=list(A)
+        #             A1[i],A1[j]=A1[j],A1[i]
+        #             A2="".join(A1)
+        #             result=self.compare(A2,B)
+        #             if result==True:
+        #                 return True
+        #         return False
+        #     elif i==len(A)-1:
+        #         return False
+        diff=[]           
+        for i in range(len(A)):
+            if A[i]!=B[i]:
+                diff.append(i)
+        
+        if len(diff)==2 and A[diff[0]]==B[diff[1]] and A[diff[1]]==B[diff[0]]:
+            return True
+        else:
+            return False
