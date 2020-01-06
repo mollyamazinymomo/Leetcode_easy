@@ -1,0 +1,35 @@
+class Solution:
+    def compute(self,num):
+        left=num%26
+        div=int(num/26)
+        return div,left
+    def convertToTitle(self, n: int) -> str:
+        
+        div,left=self.compute(n)
+        
+        elif left==0:##Handle those number without remainder
+            title='Z'
+            div=div-1
+            while div>=27:
+                div,left=self.compute(div)
+                if left==0:
+                    title='Z'+title
+                    div=div-1
+                else:
+                    title=chr(64+left)+title
+            if div==0:
+                return title
+            else:
+                return chr(64+div)+title
+            
+            
+        else:##Handle those number with remainder
+            title=chr(64+left)
+            if div==0:
+              return title
+            while div>=27:
+                div,left=self.compute(div)
+                title=chr(64+left)+title
+            title=chr(64+div)+title
+
+        return title
