@@ -1,0 +1,58 @@
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        dis_num=[]
+        for i in nums:
+            if i in dis_num:
+                continue
+            else:
+                dis_num.append(i)
+        if len(dis_num)<3:
+            return max(dis_num)
+        f_max=dis_num[0]
+        s_max=-float('inf')
+        t_max=-float('inf')
+        for i in range(1,len(dis_num)):
+            if dis_num[i]>f_max:
+                t_max=s_max
+                s_max=f_max
+                f_max=dis_num[i]
+            elif dis_num[i]>s_max:
+                t_max=s_max
+                s_max=dis_num[i]
+            elif dis_num[i]>t_max:
+                t_max=dis_num[i]
+            else:
+                continue
+        return t_max
+                
+        
+##思路参考：https://www.geeksforgeeks.org/third-largest-element-array-distinct-elements/##
+##时间复杂度O(n),通过与当前最大的第一个，第二个，第三个数进行比较，决定是否更新当前的前三大数。##
+##此方法适用于求最大的第二，第三个数，当求第5个，第n个（n>3)时不再合适），此时可以考虑排序后返回第n大数##
+    
+##Second Maximum Number##
+
+class Solution:
+    def SecondMax(self, nums: List[int]) -> int:
+        dis_num=[]
+        for i in nums:
+            if i in dis_num:
+                continue
+            else:
+                dis_num.append(i)
+        if len(dis_num)<2:
+            return max(dis_num)
+        maxi=dis_num[0]
+        s_max=-float('inf')
+        for i in range(1,len(dis_num)):
+            if dis_num[i]>maxi:
+                s_max=maxi
+                maxi=dis_num[i]
+            elif dis_num[i]>s_max:
+                s_max=dis_num[i]
+            else:
+                continue
+        return s_max
+        
+        
+            
