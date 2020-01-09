@@ -1,0 +1,30 @@
+class Solution:
+    def findUnsortedSubarray(self, nums: List[int]) -> int:
+        if len(nums)==1:
+            return 0
+        sortedlist=nums.copy()
+        sortedlist.sort()
+        print(sortedlist)
+        s_index=0
+        e_index=0
+        for i in range(len(nums)):
+            if nums[i]==sortedlist[i]:
+                continue
+            else:
+                s_index=i
+                print(s_index)
+                break
+        for i in range(len(nums)-1,0,-1):
+            if nums[i]==sortedlist[i]:
+                continue
+            else:
+                e_index=i
+                print(e_index)
+                break
+                
+        if s_index==0 and e_index==0:
+            return 0
+        else:
+            return (e_index-s_index)+1
+  
+  ##解题思路from kiki##
